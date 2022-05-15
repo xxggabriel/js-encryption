@@ -3,11 +3,12 @@ class Encript {
     characters = [
         '1', '2', '3', '4',  '5', '6', '7', '8', '9', '0', '-', '_', '=', '+', '[', ']',
         'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '`', '{','}',
-        'a', 'b', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ç','^', '~', 'â', 'ã', 'á', 'é', 'è', 'â',
-        'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', ';', '/', '<', '>', ':', '?', '°', '¬', '─',
+        'a', 'b', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ç', 'â', 'ã', 'á', 'é', 'â',
+        'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', ';', '/', '<', '>', ':', '?',
         'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
         'A', 'B', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ç', 'Â', 'Ã', 'Á', 'É', 'È', 'Â',
-        'Z', 'X', 'C', 'V', 'B', 'N', 'M', ' ', '   ', '!', '@', '#', '$', '%', '¨', '&', '*', '(', ')', '§'
+        'Z', 'X', 'C', 'V', 'B', 'N', 'M', ' ', '   ', '!', '@', '#', '$', '%', '¨', '&', '*',
+        '(', ')', 'è', '°', '¬', '─','^', '~', '§'
     ];
 
     version = 1.0
@@ -16,14 +17,16 @@ class Encript {
     
     }
 
-    
-
     encrypt(string) {
         let newString = '';
         
         for (let index = 0; index < string.length; index++) {
             let random = Math.floor(Math.random() * 5);
             let positionCharacters = this.characters.findIndex((character) => character == string.split('')[index])
+            
+            if(positionCharacters + random > this.characters.length - 1){
+                random = 0;
+            }
 
             newString += `${this.characters[random]}` + `${this.characters[positionCharacters + random]}` 
             
