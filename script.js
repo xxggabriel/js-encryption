@@ -7,7 +7,7 @@ class Encript {
         'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', ';', '/', '<', '>', ':', '?', '°', '¬', '─',
         'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
         'A', 'B', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ç', 'Â', 'Ã', 'Á', 'É', 'È', 'Â',
-        'Z', 'X', 'C', 'V', 'B', 'N', 'M', ' '
+        'Z', 'X', 'C', 'V', 'B', 'N', 'M', ' ', '   ', '!', '@', '#', '$', '%', '¨', '&', '*', '(', ')', '§'
     ];
 
     version = 1.0
@@ -33,9 +33,8 @@ class Encript {
 
     decrypt(hash) {
         let newString = '';
-        
         let encryptedBlock = hash.split('')
-        console.log('----------------------------------------------');
+        
         for (let index = 0; index < hash.length / 2; index++) {
             let random = this.characters.findIndex((character) => character == encryptedBlock[index * 2]);
             let positionCharacters = this.characters.findIndex((character) => character == encryptedBlock[(index * 2) + 1]);
