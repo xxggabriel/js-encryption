@@ -4,11 +4,103 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,600&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
     
+    <main>
 
+        <div class="form-control" id="message-01">
+            >> Digite uma palavra:
+            <input class="input" type="text" id="input-cript">
+        </div>
+
+        <div class="form-control" id="message-02" style="display: none;">
+            >> Digite uma palavra:
+        </div>
+
+        <div class="form-control" id="message-03" style="display: none;">
+            >> <span class="encrypted-message">Loading...</span>
+        </div>
+
+        <div class="form-control" id="message-04" style="display: none;">
+            >> Digite uma palavra:
+            <input class="input" type="text" id="input-cript">
+        </div>
+
+    </main>
+
+    <script src="js/jquery.min.js"></script>
     <script src="script.js"></script>
+
+    <script>
+
+        $("#input-cript").keypress(function (e) {
+            var key = e.which;
+            if(key == 13)  // the enter key code
+            {
+                $("#message-02").hide();
+                $("#message-03").hide();
+                $(".encrypted-message").html('Loading...')
+                $("#message-04").hide();
+                showStep2();
+            }
+        }); 
+        function showStep2() {
+            $("#message-02").show();
+            setTimeout(() => {
+                $("#message-02").html(`>> LOADING [2%]`);
+            }, 0)
+
+            setTimeout(() => {
+                $("#message-02").html(`>> LOADING [30%]`);
+            }, 1000)
+
+            setTimeout(() => {
+                $("#message-02").html(`>> LOADING [46%]`);
+            }, 1500)
+
+            setTimeout(() => {
+                $("#message-02").html(`>> LOADING [55%]`);
+            }, 2500)
+
+            setTimeout(() => {
+                $("#message-02").html(`>> LOADING [88%]`);
+            }, 3000)
+            
+            setTimeout(() => {
+                $("#message-02").html(`>> LOADING [99%]`);
+            }, 3800)
+
+            setTimeout(() => {
+                $("#message-02").html(`>> LOADING [100%]`);
+                showStep3();
+            }, 4500)
+                
+            
+
+            
+        }
+
+        function showEncrypetMessage() {
+            let encrypt = new Encrypt()
+            $(".encrypted-message").show().html(`${encrypt.encrypt($('#input-cript').val())}`);
+            return false;
+        }
+
+        function showStep3() {
+            
+            $("#message-03").show()
+            setTimeout(showEncrypetMessage, 900)
+            
+            
+        }
+            
+
+    </script>
 </body>
 </html>
