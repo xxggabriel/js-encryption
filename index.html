@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,93 +14,21 @@
     
     <main>
 
-        <div class="form-control" id="message-01">
-            >> Digite um texto para ser criptografado: 
-            <input class="input" type="text" id="input-cript">
+        <div class="form-control" id="form-input">
+
         </div>
 
-        <div class="form-control" id="message-02" style="display: none;">
-            >> Digite uma palavra:
+        <div class="form-control" id="loading" style="display: none;">
+            
         </div>
 
         <div class="form-control" id="message-03" style="display: none;">
             >> <span class="encrypted-message">Loading...</span>
         </div>
 
-        <div class="form-control" id="message-04" style="display: none;">
-            >> Digite uma palavra:
-            <input class="input" type="text" id="input-cript">
-        </div>
-
     </main>
 
     <script src="js/jquery.min.js"></script>
     <script src="script.js"></script>
-
-    <script>
-
-        $("#input-cript").keypress(function (e) {
-            var key = e.which;
-            if(key == 13)  // the enter key code
-            {
-                $("#message-02").hide();
-                $("#message-03").hide();
-                $(".encrypted-message").html('Loading...')
-                $("#message-04").hide();
-                showStep2();
-            }
-        }); 
-        function showStep2() {
-            $("#message-02").show();
-            setTimeout(() => {
-                $("#message-02").html(`>> LOADING [2%]`);
-            }, 0)
-
-            setTimeout(() => {
-                $("#message-02").html(`>> LOADING [30%]`);
-            }, 1000)
-
-            setTimeout(() => {
-                $("#message-02").html(`>> LOADING [46%]`);
-            }, 1500)
-
-            setTimeout(() => {
-                $("#message-02").html(`>> LOADING [55%]`);
-            }, 2500)
-
-            setTimeout(() => {
-                $("#message-02").html(`>> LOADING [88%]`);
-            }, 3000)
-            
-            setTimeout(() => {
-                $("#message-02").html(`>> LOADING [99%]`);
-            }, 3800)
-
-            setTimeout(() => {
-                $("#message-02").html(`>> LOADING [100%]`);
-                showStep3();
-            }, 4500)
-                
-            
-
-            
-        }
-
-        function showEncrypetMessage() {
-            let encrypt = new Encrypt()
-            $(".encrypted-message").show().html(`${encrypt.encrypt($('#input-cript').val())}`);
-            return false;
-        }
-
-        function showStep3() {
-            
-            $("#message-03").show()
-            setTimeout(showEncrypetMessage, 900)
-            
-            
-        }
-            
-
-    </script>
 </body>
 </html>
