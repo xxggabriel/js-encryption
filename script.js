@@ -109,7 +109,7 @@ $("body").keyup(function (e) {
 });
 
 function showFormEncrypt(){
-    
+    $("#input-cript").val("")
     $("#form-input").show().html(`
         >> Digite um texto para ser criptografado: 
         <input class="input" type="text" id="input-cript">
@@ -118,6 +118,7 @@ function showFormEncrypt(){
 }
 
 function showFormDecrypt(){
+    $("#input-cript").val("")
     $("#form-input").show().html(`
         >> Digite o hash para ser descriptografado: 
         <input class="input" type="text" id="input-cript">
@@ -200,30 +201,31 @@ function showEncrypetMessage() {
     setTimeout(function () {
         $("#sub-form").html(mainForm);
     }, 2200)
-    $("#input-cript").val("")
+   
 }
 
 function showDecryptMessage() {
     let encrypt = new Encrypt();
-
+    let messageDecrypt = $("#input-cript").val();
     $("#message-03").show().html(`
         >>
         <span class="encrypted-message">
-            ${encrypt.decrypt($("#input-cript").val())}
+            ${encrypt.decrypt(messageDecrypt)}
             <div id="sub-form"></div>
         </span>
     `)
 
     $("#sub-form").html(mainForm);
-    $("#input-cript").val("")
 }
 
 function showError() {
-    
+    $("body").html(`
+        <img src="img/404/${Math.floor(Math.random()*10)}.gif" style="width:100%;">
+    `)
 }
 
 function clearWindow() {
-    $(".input-form-main ").focus()
+    $(".input-form-main").focus()
     $("#loading").hide();
     $("#message-03").hide();
     $(".encrypted-message").html('Loading...')
