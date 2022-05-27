@@ -12,12 +12,6 @@ class Encrypt {
         '(', ')', 'è', '°', '¬', '─','^', '~', '§', '`',
     ];
 
-    version = 1.0
-
-    constructor() {
-    
-    }
-
     encrypt(string) {
         let newString = '';
         
@@ -43,14 +37,6 @@ class Encrypt {
             let random = this.characters.findIndex((character) => character == encryptedBlock[index * 2]);
             let positionCharacters = this.characters.findIndex((character) => character == encryptedBlock[(index * 2) + 1]);
             
-            // console.log((index * 3) + 1, encryptedBlock[(index * 3) + 1], encryptedBlock, random, positionCharacters);
-            // break;
-            // console.log(
-            //     random,
-            //     positionCharacters,
-            //     this.characters[Math.abs(random - positionCharacters)],
-            //     // Math.abs(positionCharacters -random)
-            // );
             newString += this.characters[Math.abs(random - positionCharacters)];
         }
 
